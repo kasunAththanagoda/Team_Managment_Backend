@@ -1,20 +1,19 @@
-package com.TMA.TeamManagmentApp.Dto;
-
+package com.TMA.TeamManagmentApp.Dto.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class UserDto {
-    private int userId;
+public class UserAddRequestDto {
+    //private int userId;
     private String userFirstName;
     private String userLastName;
     private String nic;
     private String userJobTitle;
-    private boolean activeStatus;
+    //private boolean activeStatus;
     private String userEmail;
     private String userName;
     private String password;
