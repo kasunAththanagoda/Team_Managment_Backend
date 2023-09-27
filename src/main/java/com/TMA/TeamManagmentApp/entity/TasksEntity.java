@@ -1,4 +1,4 @@
-package com.TMA.TeamManagmentApp.Entity;
+package com.TMA.TeamManagmentApp.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,6 +13,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 public class TasksEntity {
+
+    @ManyToOne
+    @JoinColumn(name="project_id", nullable=false)
+    private ProjectEntity project;
+
     @Id
     @Column(name = "task_id",length = 45)
     @GeneratedValue(strategy = GenerationType.AUTO)

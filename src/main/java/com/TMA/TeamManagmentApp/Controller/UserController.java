@@ -1,17 +1,14 @@
 package com.TMA.TeamManagmentApp.Controller;
 
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
-import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
-import com.TMA.TeamManagmentApp.Service.UserService;
-import com.TMA.TeamManagmentApp.Utils.StandardResponse;
+import com.TMA.TeamManagmentApp.service.UserService;
+import com.TMA.TeamManagmentApp.utils.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/users")
@@ -37,6 +34,14 @@ public class UserController {
        PaginatedUserGetResponseDto userGetResponseDtos =userService.getUsers(page,size);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"success",userGetResponseDtos),
+                HttpStatus.OK
+        );
+    }
+    @PostMapping(path = "/login")
+    public ResponseEntity<StandardResponse> loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto){
+            String message=userService.loginUser(userLoginRequestDto);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"success",message),
                 HttpStatus.OK
         );
     }

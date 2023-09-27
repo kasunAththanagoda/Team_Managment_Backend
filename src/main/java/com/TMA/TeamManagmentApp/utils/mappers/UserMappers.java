@@ -1,8 +1,8 @@
-package com.TMA.TeamManagmentApp.Utils.Mappers;
+package com.TMA.TeamManagmentApp.utils.mappers;
 
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
-import com.TMA.TeamManagmentApp.Entity.UserEntity;
+import com.TMA.TeamManagmentApp.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 

@@ -1,9 +1,11 @@
-package com.TMA.TeamManagmentApp.Entity;
+package com.TMA.TeamManagmentApp.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "projects")
@@ -11,6 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ProjectEntity {
+
+    @OneToMany(mappedBy="project")
+    private Set<TasksEntity> tasksEntitySet;
 
     @Id
     @Column(name = "project_id",length = 45)

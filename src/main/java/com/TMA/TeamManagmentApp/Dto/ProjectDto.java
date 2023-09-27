@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ProjectDto {
+    //private Set<TasksEntity> tasksEntitySet;
     private int projectId;
     private String projectName;
     private String startingDate ;

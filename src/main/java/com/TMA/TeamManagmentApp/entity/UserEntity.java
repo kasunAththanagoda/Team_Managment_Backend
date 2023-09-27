@@ -1,4 +1,4 @@
-package com.TMA.TeamManagmentApp.Entity;
+package com.TMA.TeamManagmentApp.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

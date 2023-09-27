@@ -1,4 +1,4 @@
-package com.TMA.TeamManagmentApp.Utils;
+package com.TMA.TeamManagmentApp.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
