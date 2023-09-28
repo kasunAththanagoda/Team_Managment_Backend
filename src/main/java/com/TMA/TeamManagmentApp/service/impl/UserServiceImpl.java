@@ -3,6 +3,7 @@ package com.TMA.TeamManagmentApp.service.impl;
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
+import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 import com.TMA.TeamManagmentApp.entity.UserEntity;
 import com.TMA.TeamManagmentApp.exception.NotFoundException;
 import com.TMA.TeamManagmentApp.repo.UserRepo;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,6 +57,13 @@ public class UserServiceImpl implements UserService {
         else {
             throw new NotFoundException("user name not found");
         }
+    }
+
+    @Override
+    public List<UserGetResponseDto> getUsersWithoutPagination() {
+        List<UserEntity> userEntities=userRepo.findAll();
+        List<UserGetResponseDto> userGetResponseDtos=userMappers.entityListToDtoList(userEntities);
+        return userGetResponseDtos;
     }
 
 

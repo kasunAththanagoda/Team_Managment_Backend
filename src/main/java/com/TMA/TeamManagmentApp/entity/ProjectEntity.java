@@ -37,6 +37,9 @@ public class ProjectEntity {
     @Column(name = "team_members", length = 150)
     private String teamMembers;
 
+    @Column(name = "information", length = 500)
+    private String information;
+
     @Column(name = "activestatus", columnDefinition = "TINYINT default 1")
     private boolean activeStatus;
 }

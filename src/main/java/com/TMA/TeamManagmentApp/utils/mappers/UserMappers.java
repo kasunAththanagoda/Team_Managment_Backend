@@ -13,4 +13,7 @@ public interface UserMappers {
     UserEntity dtoToEntity(UserAddRequestDto userAddRequestDto);
 
     List<UserGetResponseDto> pageToDtoList(Page<UserEntity> userEntities);
+
+
+    List<UserGetResponseDto> entityListToDtoList(List<UserEntity> userEntities);
 }
