@@ -1,4 +1,4 @@
-package com.TMA.TeamManagmentApp.Dto;
+package com.TMA.TeamManagmentApp.Dto.Request;
 
 import com.TMA.TeamManagmentApp.entity.ProjectEntity;
 import lombok.AllArgsConstructor;
@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TasksDto {
-    private ProjectEntity project;
-    private int taskId;
+public class TaskAddRequestDto {
+    private int project;
+    //private int taskId;
     private String title;
     private String content;
     private String assignedTo;

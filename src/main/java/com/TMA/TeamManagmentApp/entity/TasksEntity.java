@@ -35,13 +35,24 @@ public class TasksEntity {
     @Column(name = "created_by", length = 45)
     private String createdBy;
 
-
-    @Column(name = "created_date", columnDefinition = "DATETIME")
-    private Date createdDate;
+    @Column(name = "created_date", length = 45)
+    private String createdDate;
 
     @Column(name = "due_date", length = 45)
     private String dueDate;
 
     @Column(name = "activestatus", columnDefinition = "TINYINT default 1")
     private boolean activeStatus;
+
+
+    public TasksEntity(ProjectEntity project, String title, String content, String assignedTo, String createdBy, String createdDate, String dueDate, boolean activeStatus) {
+        this.project = project;
+        this.title = title;
+        this.content = content;
+        this.assignedTo = assignedTo;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.dueDate = dueDate;
+        this.activeStatus = activeStatus;
+    }
 }

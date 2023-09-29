@@ -1,5 +1,6 @@
 package com.TMA.TeamManagmentApp.service.impl;
 
+import com.TMA.TeamManagmentApp.Dto.ProjectDto;
 import com.TMA.TeamManagmentApp.Dto.Request.ProjectAddRequestDto;
 import com.TMA.TeamManagmentApp.entity.ProjectEntity;
 import com.TMA.TeamManagmentApp.repo.ProjectRepo;
@@ -7,6 +8,8 @@ import com.TMA.TeamManagmentApp.service.ProjectService;
 import com.TMA.TeamManagmentApp.utils.mappers.ProjectMappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -23,4 +26,13 @@ public class ProjectServiceImpl implements ProjectService {
         ProjectEntity savedEntity = projectRepo.save(projectEntity);
         return "project "+savedEntity.getProjectName()+" with id "+savedEntity.getProjectId();
     }
+
+    @Override
+    public List<ProjectDto> getProjects() {
+        List<ProjectEntity> projectEntities=projectRepo.findAll();
+        List<ProjectDto> projectDtoList=projectMappers.entityListToDtoList(projectEntities);
+        return projectDtoList;
+    }
+
+
 }

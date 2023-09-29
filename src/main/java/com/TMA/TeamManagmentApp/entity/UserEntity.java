@@ -36,7 +36,7 @@ public class UserEntity {
     @Column(name = "user_email",length = 45)
     private String userEmail;
 
-    @Column(name = "user_name",length = 45)
+    @Column(name = "user_name",length = 45,unique = true)
     private String userName;
 
     @Column(name = "user_Password",length = 45)
