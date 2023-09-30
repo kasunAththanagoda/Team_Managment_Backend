@@ -36,11 +36,20 @@ public class TaskController {
                 HttpStatus.OK
         );
     }
-    @GetMapping(path = "/getTasksByUser",params = "user")
-    public ResponseEntity<StandardResponse> getTasksByUser(@RequestParam(value = "user") String userName){
-        List<TasksDto> tasks=taskService.getTasksByUser(userName);
+    @GetMapping(path = "/getTasksByUser",params = {"user","activeStatus"})
+    public ResponseEntity<StandardResponse> getTasksByUser(@RequestParam(value = "user") String userName,@RequestParam(value = "activeStatus") boolean activeStatus){
+        List<TasksDto> tasks=taskService.getTasksByUser(userName,activeStatus);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"success",tasks),
+                HttpStatus.OK
+        );
+    }
+
+    @PutMapping(path = "/switchActiveStatus",params = {"taskId"})
+    public ResponseEntity<StandardResponse> switchStatus(@RequestParam(value = "taskId") int taskId){
+        String message=taskService.switchStatus(taskId);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"success",message),
                 HttpStatus.OK
         );
     }

@@ -10,5 +10,7 @@ public interface TaskService {
 
     List<TasksDto> getTasks();
 
-    List<TasksDto> getTasksByUser(String userName);
+    List<TasksDto> getTasksByUser(String userName,boolean activeStatus);
+
+    String switchStatus(int taskId);
 }
