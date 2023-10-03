@@ -16,5 +16,5 @@ public class ProjectUpdateRequestDto {
     private String createdBy;
     private String teamMembers;
     private String information;
-    private boolean activeStatus;
+   // private boolean activeStatus;
 }

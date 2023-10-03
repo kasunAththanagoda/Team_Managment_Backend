@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> userEntity=userRepo.findByUserNameEquals(userLoginRequestDto.getUserName());
         if(userEntity.isPresent()){
             if(userEntity.get().getPassword().equals(userLoginRequestDto.getPassword())){
-                return "user found";
+                return userEntity.get().getAvatar();
             }
             else{
                 throw new NotFoundException("password error");

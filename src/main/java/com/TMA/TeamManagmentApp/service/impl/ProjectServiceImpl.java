@@ -47,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
             byId.get().setCreatedBy(projectUpdateRequestDto.getCreatedBy());
             byId.get().setTeamMembers(projectUpdateRequestDto.getTeamMembers());
             byId.get().setInformation(projectUpdateRequestDto.getInformation());
-            byId.get().setActiveStatus(projectUpdateRequestDto.isActiveStatus());
+        //    byId.get().setActiveStatus(projectUpdateRequestDto.isActiveStatus());
 
             ProjectEntity save = projectRepo.save(byId.get());
             return "project updated";

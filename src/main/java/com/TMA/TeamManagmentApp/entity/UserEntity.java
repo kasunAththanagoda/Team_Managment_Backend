@@ -42,4 +42,7 @@ public class UserEntity {
     @Column(name = "user_Password",length = 45)
     private String password;
 
+    @Column(name = "avatar",length = 45)
+    private String avatar;
+
 }

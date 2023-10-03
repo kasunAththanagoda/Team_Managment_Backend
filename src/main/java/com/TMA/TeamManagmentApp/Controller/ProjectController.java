@@ -38,7 +38,7 @@ public class ProjectController {
         );
     }
 
-    @PostMapping(path = "/updateProject")
+    @PutMapping(path = "/updateProject")
     public ResponseEntity<StandardResponse> updateProject(@RequestBody ProjectUpdateRequestDto projectUpdateRequestDto) {
         String message = projectService.updateProject(projectUpdateRequestDto);
         return new ResponseEntity<StandardResponse>(
@@ -47,7 +47,7 @@ public class ProjectController {
         );
     }
 
-    @DeleteMapping(path = "deleteProject", params = "projectId")
+    @DeleteMapping(path = "/deleteProject", params = "projectId")
     public ResponseEntity<StandardResponse> deleteProject ( @RequestParam(value = "projectId") int projectId){
         String message=projectService.deleteProjet(projectId);
         return new ResponseEntity<StandardResponse>(
