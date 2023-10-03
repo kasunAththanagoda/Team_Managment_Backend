@@ -2,6 +2,7 @@ package com.TMA.TeamManagmentApp.service.impl;
 
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Request.UserUpdateRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 import com.TMA.TeamManagmentApp.entity.UserEntity;
@@ -65,6 +66,30 @@ public class UserServiceImpl implements UserService {
         List<UserGetResponseDto> userGetResponseDtos=userMappers.entityListToDtoList(userEntities);
         return userGetResponseDtos;
     }
+
+    @Override
+    public String updateUser(UserUpdateRequestDto userUpdateRequestDto) {
+        Optional<UserEntity> byId = userRepo.findById(userUpdateRequestDto.getUserId());
+        if(byId.isPresent()){
+            UserEntity userEntity = byId.get();
+            userEntity.setUserFirstName(userUpdateRequestDto.getUserFirstName());
+            userEntity.setUserLastName(userUpdateRequestDto.getUserLastName());
+            userEntity.setNic(userUpdateRequestDto.getNic());
+            userEntity.setUserJobTitle(userUpdateRequestDto.getUserJobTitle());
+            userEntity.setActiveStatus(userUpdateRequestDto.isActiveStatus());
+            userEntity.setUserEmail(userUpdateRequestDto.getUserEmail());
+            userEntity.setUserName(userUpdateRequestDto.getUserName());
+            userEntity.setPassword(userUpdateRequestDto.getPassword());
+            userEntity.setAvatar(userUpdateRequestDto.getAvatar());
+
+            userRepo.save(userEntity);
+            return "user updated";
+        }else{
+            throw new NotFoundException("id not found");
+        }
+        }
+
+
 
 
 }

@@ -2,6 +2,7 @@ package com.TMA.TeamManagmentApp.service;
 
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Request.UserUpdateRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 
@@ -16,4 +17,6 @@ public interface UserService {
 
 
     List<UserGetResponseDto> getUsersWithoutPagination();
+
+    String updateUser(UserUpdateRequestDto userUpdateRequestDto);
 }
