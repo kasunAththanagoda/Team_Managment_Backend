@@ -101,5 +101,16 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public String deleteUserById(int userId) {
+        if(userRepo.existsById(userId)){
+            userRepo.deleteById(userId);
+            return "deleted";
+        }
+        else{
+            throw new NotFoundException("id not found");
+        }
+    }
+
 
 }

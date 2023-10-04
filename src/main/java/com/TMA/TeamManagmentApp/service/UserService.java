@@ -22,4 +22,6 @@ public interface UserService {
     String updateUser(UserUpdateRequestDto userUpdateRequestDto);
 
     UserByNameResponseDto getUSerByUserName(String userName);
+
+    String deleteUserById(int userId);
 }

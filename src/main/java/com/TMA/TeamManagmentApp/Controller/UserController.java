@@ -78,6 +78,15 @@ public class UserController {
                 new StandardResponse(200, "success", userByNameResponseDto),
                 HttpStatus.OK
         );
+    }
+
+    @DeleteMapping(path = "/deleteUser/{userId}")
+    public ResponseEntity<StandardResponse> deleterUserById(@PathVariable(value = "userId")int userId){
+        String message=userService.deleteUserById(userId);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200, "success", message),
+                HttpStatus.OK
+        );
 
     }
 
