@@ -4,6 +4,7 @@ import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserUpdateRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
+import com.TMA.TeamManagmentApp.Dto.Response.UserByNameResponseDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 import com.TMA.TeamManagmentApp.entity.UserEntity;
 import com.TMA.TeamManagmentApp.exception.NotFoundException;
@@ -89,7 +90,16 @@ public class UserServiceImpl implements UserService {
         }
         }
 
-
+    @Override
+    public UserByNameResponseDto getUSerByUserName(String userName) {
+        Optional<UserEntity> byUserNameEquals = userRepo.findByUserNameEquals(userName);
+        if(byUserNameEquals.isPresent()){
+            UserByNameResponseDto userByNameResponseDto =userMappers.entityToDto(byUserNameEquals.get());
+            return userByNameResponseDto;
+        }else{
+            throw new NotFoundException("user not found");
+        }
+    }
 
 
 }

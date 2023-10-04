@@ -1,6 +1,7 @@
 package com.TMA.TeamManagmentApp.utils.mappers;
 
 import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Response.UserByNameResponseDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 import com.TMA.TeamManagmentApp.entity.UserEntity;
 import org.mapstruct.Mapper;
@@ -16,4 +17,6 @@ public interface UserMappers {
 
 
     List<UserGetResponseDto> entityListToDtoList(List<UserEntity> userEntities);
+
+    UserByNameResponseDto entityToDto(UserEntity userEntity);
 }

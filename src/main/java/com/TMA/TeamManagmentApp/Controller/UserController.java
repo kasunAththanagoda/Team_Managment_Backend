@@ -4,6 +4,7 @@ import com.TMA.TeamManagmentApp.Dto.Request.UserAddRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserLoginRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Request.UserUpdateRequestDto;
 import com.TMA.TeamManagmentApp.Dto.Response.Paginated.PaginatedUserGetResponseDto;
+import com.TMA.TeamManagmentApp.Dto.Response.UserByNameResponseDto;
 import com.TMA.TeamManagmentApp.Dto.Response.UserGetResponseDto;
 import com.TMA.TeamManagmentApp.service.UserService;
 import com.TMA.TeamManagmentApp.utils.StandardResponse;
@@ -68,6 +69,16 @@ public class UserController {
                 new StandardResponse(200, "success", message),
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping(path = "/searchUserByname/{userName}")
+    public ResponseEntity<StandardResponse> searchUserByname(@PathVariable(value = "userName")String userName){
+        UserByNameResponseDto userByNameResponseDto=userService.getUSerByUserName(userName);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200, "success", userByNameResponseDto),
+                HttpStatus.OK
+        );
+
     }
 
 }
