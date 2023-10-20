@@ -134,5 +134,14 @@ public class UserController {
 //                HttpStatus.OK
 //        );
     }
+
+    @GetMapping(path = "/getAvatar/{username}")
+    public ResponseEntity<StandardResponse> getAvatar(@PathVariable(value = "username")String username){
+        String avatar=userService.getAvatar(username);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200, "success", avatar),
+               HttpStatus.OK
+       );
+    }
 }
 

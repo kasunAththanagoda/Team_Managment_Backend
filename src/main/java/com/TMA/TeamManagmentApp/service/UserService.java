@@ -24,4 +24,6 @@ public interface UserService {
     UserByNameResponseDto getUSerByUserName(String userName);
 
     String deleteUserById(int userId);
+
+    String getAvatar(String username);
 }

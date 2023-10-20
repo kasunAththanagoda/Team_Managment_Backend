@@ -112,5 +112,16 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public String getAvatar(String username) {
+        Optional<String> avatar=userRepo.getAvatar(username);
+        if(avatar.isPresent()) {
+            return avatar.get();
+        }
+        else{
+            throw new NotFoundException("user name not found");
+        }
+    }
+
 
 }
