@@ -41,7 +41,7 @@ public class UserEntity {
     @Column(name = "user_name",length = 45,unique = true)
     private String username;
 
-    @Column(name = "user_Password",length = 45)
+    @Column(name = "user_Password",length = 100)
     private String password;
 
     @Column(name = "avatar",length = 45)
