@@ -1,9 +1,11 @@
 package com.TMA.TeamManagmentApp.entity;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -37,12 +39,14 @@ public class UserEntity {
     private String userEmail;
 
     @Column(name = "user_name",length = 45,unique = true)
-    private String userName;
+    private String username;
 
     @Column(name = "user_Password",length = 45)
     private String password;
 
     @Column(name = "avatar",length = 45)
     private String avatar;
+
+    private String role;
 
 }

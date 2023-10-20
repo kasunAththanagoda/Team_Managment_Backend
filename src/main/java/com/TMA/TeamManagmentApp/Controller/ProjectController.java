@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/projects")
-@CrossOrigin()
+@CrossOrigin("*")
 public class ProjectController {
 
     @Autowired

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/tasks")
-@CrossOrigin
+@CrossOrigin("*")
 public class TaskController {
     @Autowired
     private TaskService taskService;

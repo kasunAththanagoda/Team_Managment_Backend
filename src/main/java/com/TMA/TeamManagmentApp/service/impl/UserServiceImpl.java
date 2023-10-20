@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userMappers.dtoToEntity(userAddRequestDto);
         userEntity.setActiveStatus(true);
         UserEntity savedUser = userRepo.save(userEntity);
-        return savedUser.getUserName()+ " saved with id "+savedUser.getUserId();
+        return savedUser.getUsername()+ " saved with id "+savedUser.getUserId();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String loginUser(UserLoginRequestDto userLoginRequestDto) {
-        Optional<UserEntity> userEntity=userRepo.findByUserNameEquals(userLoginRequestDto.getUserName());
+        Optional<UserEntity> userEntity=userRepo.findByUsernameEquals(userLoginRequestDto.getUsername());
         if(userEntity.isPresent()){
             if(userEntity.get().getPassword().equals(userLoginRequestDto.getPassword())){
                 return userEntity.get().getAvatar();
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
             userEntity.setUserJobTitle(userUpdateRequestDto.getUserJobTitle());
             userEntity.setActiveStatus(userUpdateRequestDto.isActiveStatus());
             userEntity.setUserEmail(userUpdateRequestDto.getUserEmail());
-            userEntity.setUserName(userUpdateRequestDto.getUserName());
+            userEntity.setUsername(userUpdateRequestDto.getUsername());
             userEntity.setPassword(userUpdateRequestDto.getPassword());
             userEntity.setAvatar(userUpdateRequestDto.getAvatar());
 
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserByNameResponseDto getUSerByUserName(String userName) {
-        Optional<UserEntity> byUserNameEquals = userRepo.findByUserNameEquals(userName);
+        Optional<UserEntity> byUserNameEquals = userRepo.findByUsernameEquals(userName);
         if(byUserNameEquals.isPresent()){
             UserByNameResponseDto userByNameResponseDto =userMappers.entityToDto(byUserNameEquals.get());
             return userByNameResponseDto;

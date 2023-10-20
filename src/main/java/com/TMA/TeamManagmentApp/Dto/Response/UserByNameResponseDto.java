@@ -16,7 +16,7 @@ public class UserByNameResponseDto {
         private String userJobTitle;
         private boolean activeStatus;
         private String userEmail;
-        private String userName;
+        private String username;
         //private String password;
         private String avatar;
 }
