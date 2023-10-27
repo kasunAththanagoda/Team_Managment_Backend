@@ -49,6 +49,8 @@ public class ProjectController {
 
     @DeleteMapping(path = "/deleteProject", params = "projectId")
     public ResponseEntity<StandardResponse> deleteProject ( @RequestParam(value = "projectId") int projectId){
+        System.out.println("delete accessed");
+
         String message=projectService.deleteProjet(projectId);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200, "success", message),

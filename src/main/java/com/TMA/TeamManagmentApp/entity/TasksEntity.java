@@ -1,9 +1,8 @@
 package com.TMA.TeamManagmentApp.entity;
 
 //import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +15,8 @@ import java.util.Date;
 public class TasksEntity {
 
     @ManyToOne
+    @EqualsAndHashCode.Exclude @ToString.Exclude
+    @JsonIgnore
     @JoinColumn(name="project_id", nullable=false)
     private ProjectEntity project;
 
@@ -56,4 +57,7 @@ public class TasksEntity {
         this.dueDate = dueDate;
         this.activeStatus = activeStatus;
     }
+
+
+
 }

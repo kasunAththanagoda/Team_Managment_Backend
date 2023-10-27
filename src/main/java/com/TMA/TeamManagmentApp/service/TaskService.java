@@ -1,6 +1,7 @@
 package com.TMA.TeamManagmentApp.service;
 
 import com.TMA.TeamManagmentApp.Dto.Request.TaskAddRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Response.TaskgetResponseDto;
 import com.TMA.TeamManagmentApp.Dto.TasksDto;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface TaskService {
     List<TasksDto> getTasksByUser(String userName,boolean activeStatus);
 
     String switchStatus(int taskId);
+
+    List<TaskgetResponseDto> getTasksNew();
 }

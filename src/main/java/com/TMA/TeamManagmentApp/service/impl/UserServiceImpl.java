@@ -14,6 +14,7 @@ import com.TMA.TeamManagmentApp.utils.mappers.UserMappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public String addUSer(UserAddRequestDto userAddRequestDto) {
         UserEntity userEntity = userMappers.dtoToEntity(userAddRequestDto);
+        String plaintextPassword = userAddRequestDto.getPassword();
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(plaintextPassword);
+        userEntity.setPassword(hashedPassword);
+
         userEntity.setActiveStatus(true);
         UserEntity savedUser = userRepo.save(userEntity);
         return savedUser.getUsername()+ " saved with id "+savedUser.getUserId();
@@ -114,7 +121,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getAvatar(String username) {
+        System.out.println("hereee");
         Optional<String> avatar=userRepo.getAvatar(username);
+        System.out.println("get avatarrr"+avatar.get());
         if(avatar.isPresent()) {
             return avatar.get();
         }

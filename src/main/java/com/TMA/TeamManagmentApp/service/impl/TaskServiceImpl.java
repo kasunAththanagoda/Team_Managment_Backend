@@ -1,6 +1,7 @@
 package com.TMA.TeamManagmentApp.service.impl;
 
 import com.TMA.TeamManagmentApp.Dto.Request.TaskAddRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Response.TaskgetResponseDto;
 import com.TMA.TeamManagmentApp.Dto.TasksDto;
 import com.TMA.TeamManagmentApp.entity.TasksEntity;
 import com.TMA.TeamManagmentApp.exception.NotFoundException;
@@ -83,5 +84,11 @@ public class TaskServiceImpl implements TaskService {
             throw new NotFoundException("id not found");
         }
 
+    }
+
+    @Override
+    public List<TaskgetResponseDto> getTasksNew() {
+        List<TaskgetResponseDto> taskgetResponseDtos=taskRepo.tasksNew();
+        return taskgetResponseDtos ;
     }
 }

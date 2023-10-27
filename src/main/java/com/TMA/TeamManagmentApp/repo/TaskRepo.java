@@ -1,5 +1,6 @@
 package com.TMA.TeamManagmentApp.repo;
 
+import com.TMA.TeamManagmentApp.Dto.Response.TaskgetResponseDto;
 import com.TMA.TeamManagmentApp.entity.TasksEntity;
 //import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,4 +28,8 @@ public interface TaskRepo extends JpaRepository<TasksEntity,Integer> {
     @Modifying
     @Query(value = "UPDATE tasks SET activestatus = :newActiveStatus WHERE task_id = :taskId", nativeQuery = true)
     int updateActiveStatusByTaskIdNativeQuery(int taskId, boolean newActiveStatus);
+
+
+    @Query(value = "select task_id,created_date,assigned_to,due_date,title,content,created_by from tasks;", nativeQuery = true)
+    List<TaskgetResponseDto> tasksNew();
 }

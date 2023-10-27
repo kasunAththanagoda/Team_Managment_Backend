@@ -1,6 +1,7 @@
 package com.TMA.TeamManagmentApp.Controller;
 
 import com.TMA.TeamManagmentApp.Dto.Request.TaskAddRequestDto;
+import com.TMA.TeamManagmentApp.Dto.Response.TaskgetResponseDto;
 import com.TMA.TeamManagmentApp.Dto.TasksDto;
 import com.TMA.TeamManagmentApp.entity.TasksEntity;
 import com.TMA.TeamManagmentApp.service.TaskService;
@@ -36,6 +37,17 @@ public class TaskController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping(path = "/getTasksNew")
+    public ResponseEntity<StandardResponse> getTasksnew(){
+        List<TaskgetResponseDto> tasks=taskService.getTasksNew();
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"success",tasks),
+                HttpStatus.OK
+        );
+    }
+
+
     @GetMapping(path = "/getTasksByUser",params = {"user","activeStatus"})
     public ResponseEntity<StandardResponse> getTasksByUser(@RequestParam(value = "user") String userName,@RequestParam(value = "activeStatus") boolean activeStatus){
         List<TasksDto> tasks=taskService.getTasksByUser(userName,activeStatus);
